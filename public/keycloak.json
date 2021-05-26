@@ -1,10 +1,7 @@
 {
-  "realm": "authDemo",
-  "auth-server-url": "http://localhost:8080/auth/",
-  "ssl-required": "external",
-  "resource": "my-auth-app",
-  "public-client": true,
+  "realm": "saipinternal",
+  "auth-server-url": "https://presso.saip.gov.sa/auth",
+  "ssl-required": "internal",
+  "resource": "saipinternalclient",
   "confidential-port": 0
 }
-
-
