@@ -1,27 +1,26 @@
 import { useState, useEffect } from "react";
 import Keycloak from "keycloak-js";
 import UserInfo from './userInfo'
+import { useHistory } from "react-router";
 
 function Secured() {
   const [authenticated, setAuthenticated] = useState(null);
   const [keycloak, setkeyCloak] = useState(null);
+  const history = useHistory()
   
-  async function key () {
-    try {
-      const keycloakInit = await Keycloak("/keycloak.json");
-      const auth = await keycloakInit.init({ onLoad: "login-required" })
+  useEffect( () => {
+    const keycloakInit = Keycloak("/keycloak.json");
+    keycloakInit.init({ onLoad: "login-required","checkLoginIframe" : false }).success(auth => {
       setkeyCloak(keycloakInit);
       setAuthenticated(auth);
-    } catch (error) {
-      console.log("error", error)
-    }
-  }
-  useEffect( () => {
-    key()
+    })
+  
   }, []);
   return (
     keycloak && (authenticated ? (
       <div>
+        done
+        <button onClick={()=>{history.push("/"); keycloak.logout()}}>logout</button>
         <UserInfo keycloak = {keycloak}/>
       </div>
     ) : (

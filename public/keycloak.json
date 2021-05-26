@@ -3,5 +3,8 @@
   "auth-server-url": "https://presso.saip.gov.sa/auth",
   "ssl-required": "internal",
   "resource": "saipinternalclient",
+  "credentials": {
+    "secret": "a58c0b15-608b-47ed-a32f-7ed16e5d3f75"
+  },
   "confidential-port": 0
 }

@@ -2,13 +2,13 @@ import {useState, useEffect} from 'react'
 
 function UserInfo ({keycloak}) {
   const [user, setUser] = useState({})
-  console.log("keycloak", keycloak)
+
     useEffect(() => {
-      keycloak.loadUserInfo().then(userInfo => {
+      keycloak.loadUserInfo().success((userInfo =>{
         console.log("user", userInfo)
         setUser({name: userInfo.name, email: userInfo.email, id: userInfo.sub})
-        });
-    }, [keycloak])
+      }))
+    }, [])
 
     return (
       <div className="UserInfo">
